@@ -1,0 +1,135 @@
+<form name="carOptions" class="form-horizontal" ng-if="ready">
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="type">Type</label>
+    <div class="col-sm-10">
+      <select id="type" ng-model="myData.type">
+        <option ng-repeat="option in options['configurationTypes']"
+          value="{{option.value}}">{{option.label}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="bodyEngine">Body Engine</label>
+    <div class="col-sm-10">
+      <select id="bodyEngine" ng-model="myData.bodyEngine">
+        <option ng-repeat="option in options['bodyEngines']"
+                value="{{option.value}}" ng-if="myData.type === option.type">{{option.label}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="engine">Engine</label>
+    <div class="col-sm-10">
+      <select id="engine" ng-model="myData.engine">
+        <option ng-repeat="option in options['engines']"
+                value="{{option.value}}" ng-if="myData.type === option.type">{{option.label}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="transmission">Transmission</label>
+    <div class="col-sm-10">
+      <select id="transmission" ng-model="myData.transmission">
+        <option ng-repeat="option in options['transmissions']"
+                value="{{option.value}}" ng-if="myData.type === option.type">{{option.label}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="finish">Finish</label>
+    <div class="col-sm-10">
+      <select id="finish" ng-model="myData.finish">
+        <option ng-repeat="option in options['finishes']"
+                value="{{option.value}}" ng-if="myData.type === option.type">{{option.label}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="tires">Tires</label>
+    <div class="col-sm-10">
+      <select id="tires" ng-model="myData.tires">
+        <option ng-repeat="option in options['tires']"
+                value="{{option.value}}" ng-if="myData.type === option.type">{{option.label}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="color">Color</label>
+    <div class="col-sm-10">
+      <select id="color" ng-model="myData.color">
+        <option ng-repeat="option in options['colors']"
+                value="{{option.value}}">{{option.label}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="colorSport">Color Sport</label>
+    <div class="col-sm-10">
+      <select id="colorSport" ng-model="myData.colorSport">
+        <option ng-repeat="option in options['colorsSport']"
+                value="{{option.value}}">{{option.label}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Extras</label>
+    <div class="col-sm-10">
+      <label class="checkbox-inline" ng-repeat="extra in options['extras']" ng-if="myData.type === extra.type">
+        <input type="checkbox" value="{{extra.value}}">
+        {{extra.label}}
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="comments">Comments</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" rows="3" ng-model="myData.comments" id="comments" required>
+      </textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="cp">CP</label>
+    <div class="col-sm-10">
+      <input ng-model="myData.cp" id="cp" type="text" required>
+      </input>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="email">Email</label>
+    <div class="col-sm-10">
+      <input ng-model="myData.email" id="email" type="email" required>
+      </input>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">SEND</button>
+  <hr>
+  {{options}}
+  <hr>
+  {{myData}}
+</form>
+<div ng-if="!ready && error">
+  ERROR
+</div>
+<div ng-if="!ready && !error">
+  Loading
+</div>
