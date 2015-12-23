@@ -64,7 +64,9 @@ angular.module('carsApp')
       $scope.myData.tires = $scope.options.tires[0].value
       $scope.myData.color = $scope.options.colors[0].value
       $scope.myData.colorSport = $scope.options.colorsSport[0].value
-      $scope.myData.extras = []
+      for (var extra in $scope.options.extras) {
+        $scope.myData.extras[extra] = false;
+      }
       $scope.myData.cp= '',
       $scope.myData.email= '',
       $scope.myData.comments= ''
@@ -93,25 +95,22 @@ angular.module('carsApp')
       })
     }
 
-    $scope.changeType = function(type){
-      console.log('---',type)
-      $scope.myData.type = type;
-      if(type=='sport'){
-        $scope.myData.bodyEngine = _.find($scope.options.bodyEngines, {type: type}).value;
-        $scope.myData.engine = _.find($scope.options.engines, {type: type}).value;
-        $scope.myData.transmission = _.find($scope.options.transmissions, {type: type}).value;
-        $scope.myData.finish = _.find($scope.options.finishes, {type: type}).value;
-        $scope.myData.tires = _.find($scope.options.tires, {type: type}).value;
+    $scope.changeType = function(){
+      if($scope.myData.type=='sport'){
+        $scope.myData.bodyEngine = _.find($scope.options.bodyEngines, {type: $scope.myData.type}).value;
+        $scope.myData.engine = _.find($scope.options.engines, {type: $scope.myData.type}).value;
+        $scope.myData.transmission = _.find($scope.options.transmissions, {type: $scope.myData.type}).value;
+        $scope.myData.finish = _.find($scope.options.finishes, {type: $scope.myData.type}).value;
+        $scope.myData.tires = _.find($scope.options.tires, {type: $scope.myData.type}).value;
         $scope.myData.colorSport = $scope.options.colorsSport[0].value
         for (var extra in $scope.options.extras) {
-          if($scope.myData.extras.indexOf($scope.options.extras[extra].value)<0)
-            $scope.myData.extras.push($scope.options.extras[extra].value)
+          $scope.myData.extras[extra] = true;
         }
       } else {
         $scope.myData.colorSport = '';
       }
     }
-    
+/*
     $scope.$watch('myData.type',function(newValue){
       if(newValue=='sport'){
         $scope.myData.bodyEngine = _.find($scope.options.bodyEngines, {type: newValue}).value;
@@ -121,12 +120,11 @@ angular.module('carsApp')
         $scope.myData.tires = _.find($scope.options.tires, {type: newValue}).value;
         $scope.myData.colorSport = $scope.options.colorsSport[0].value
         for (var extra in $scope.options.extras) {
-          if($scope.myData.extras.indexOf($scope.options.extras[extra].value)<0)
-            $scope.myData.extras.push($scope.options.extras[extra].value)
+          $scope.myData.extras[extra] = true;
         }
       } else {
         $scope.myData.colorSport = '';
       }
     });
-
+*/
   }]);

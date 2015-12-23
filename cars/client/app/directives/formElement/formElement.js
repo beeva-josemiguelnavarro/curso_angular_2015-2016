@@ -15,8 +15,8 @@ angular.module('carsApp')
 					case 'radio':
 						return 'app/directives/formElement/formElement.template.radio.html';
 						break;
-					case 'check':
-						return 'app/directives/formElement/formElement.template.check.html';
+					case 'checkbox':
+						return 'app/directives/formElement/formElement.template.checkbox.html';
 						break;
 					case 'text':
 						return 'app/directives/formElement/formElement.template.text.html';

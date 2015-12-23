@@ -1,0 +1,9 @@
+<div class="form-group" ng-hide="hide">
+  <label class="col-sm-2 control-label">{{label}}</label>
+  <div class="col-sm-10">
+  	<label class="checkbox-inline" ng-repeat="object in options">
+      <input type="checkbox" id="{{name}}-{{object.value}}" name="{{name}}-{{object.value}}" ng-value="{{object.value}}" ng-model="model[$index]" ng-disabled="disabled">
+      {{object.label}}
+    </label>
+  </div>
+</div>

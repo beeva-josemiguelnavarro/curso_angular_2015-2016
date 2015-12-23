@@ -5,7 +5,8 @@
     type="radio"
     label="Type"
     model="myData.type"
-    options="options['configurationTypes']"></form-element>
+    options="options['configurationTypes']"
+    hide="false"></form-element>
   <form-element 
     form="carOptions" 
     name="bodyEngine"
@@ -13,7 +14,8 @@
     label="Body Engine"
     model="myData.bodyEngine"
     options="options['bodyEngines']"
-    disabled="myData.type=='sport'"></form-element>
+    disabled="myData.type=='sport'"
+    hide="false"></form-element>
   <form-element 
     form="carOptions" 
     name="engine"
@@ -21,7 +23,8 @@
     label="Engine"
     model="myData.engine"
     options="options['engines']"
-    disabled="myData.type=='sport'"></form-element>
+    disabled="myData.type=='sport'"
+    hide="false"></form-element>
   <form-element 
     form="carOptions" 
     name="transmission"
@@ -29,7 +32,8 @@
     label="Transmission"
     model="myData.transmission"
     options="options['transmissions']"
-    disabled="myData.type=='sport'"></form-element>
+    disabled="myData.type=='sport'"
+    hide="false"></form-element>
   <form-element 
     form="carOptions" 
     name="finish"
@@ -37,7 +41,8 @@
     label="Finish"
     model="myData.finish"
     options="options['finishes']"
-    disabled="myData.type=='sport'"></form-element>
+    disabled="myData.type=='sport'"
+    hide="false"></form-element>
   <form-element 
     form="carOptions" 
     name="tires"
@@ -45,7 +50,8 @@
     label="Tyres"
     model="myData.tires"
     options="options['tires']"
-    disabled="myData.type=='sport'"></form-element>
+    disabled="myData.type=='sport'"
+    hide="false"></form-element>
   <form-element 
     form="carOptions" 
     name="color"
@@ -53,7 +59,8 @@
     label="Color"
     model="myData.color"
     options="options['colors']"
-    disabled="myData.type=='sport'"></form-element>
+    disabled="myData.type=='sport'"
+    hide="false"></form-element>
   <form-element 
     form="carOptions" 
     name="colorSport"
@@ -61,7 +68,17 @@
     label="Color Sport"
     model="myData.colorSport"
     options="options['colorsSport']"
+    disabled="false"
     hide="myData.type!='sport'"></form-element>
+  <form-element 
+    form="carOptions" 
+    name="extras"
+    type="checkbox"
+    label="Extras"
+    model="myData.extras"
+    options="options['extras']"
+    disabled="myData.type=='sport'"
+    hide="false"></form-element>
 </form>
 <form name="carOptions" class="form-horizontal" ng-if="ready">
   <div class="form-group">
@@ -69,7 +86,7 @@
     <div class="col-sm-10">
       <label class="radio-inline" ng-repeat="option in options['configurationTypes']">
         <input id="type" name="inlineRadioType" ng-model="myData.type" type="radio" required
-               value="{{option.value}}">{{option.label}}
+               ng-value="option.value" ng-change="changeType()">{{option.label}}
       </label>      
       <div class="alert-error" ng-show="carOptions.inlineRadioType.$dirty">
         <span class="error" ng-show="carOptions.inlineRadioType.$error.required">
@@ -77,23 +94,12 @@
       </div>  
     </div>
   </div>
-  
-  <div class="form-group" ng-show="myData.type=='sport'">
-    <label class="col-sm-2 control-label" for="colorSport">Color Sport</label>
-    <div class="col-sm-10">
-      <select id="colorSport" ng-model="myData.colorSport">
-        <option ng-repeat="option in options['colorsSport']"
-                value="{{option.value}}">{{option.label}}
-        </option>
-      </select>
-    </div>
-  </div>
 
   <div class="form-group">
     <label class="col-sm-2 control-label">Extras</label>
     <div class="col-sm-10">
       <label class="checkbox-inline" ng-repeat="extra in options['extras']">
-        <input type="checkbox" ng-value="{{extra.value}}" ng-model="myData.extras[extra.value]" ng-change="toggleExtra(extra.value)" ng-checked="myData.extras.indexOf(extra.value)>-1" ng-disabled="myData.type=='sport'">
+        <input type="checkbox" ng-value="{{extra.value}}" ng-model="myData.extras[$index]" ng-disabled="myData.type=='sport'">
         {{extra.label}}
       </label>
     </div>
