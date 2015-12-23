@@ -93,6 +93,25 @@ angular.module('carsApp')
       })
     }
 
+    $scope.changeType = function(type){
+      console.log('---',type)
+      $scope.myData.type = type;
+      if(type=='sport'){
+        $scope.myData.bodyEngine = _.find($scope.options.bodyEngines, {type: type}).value;
+        $scope.myData.engine = _.find($scope.options.engines, {type: type}).value;
+        $scope.myData.transmission = _.find($scope.options.transmissions, {type: type}).value;
+        $scope.myData.finish = _.find($scope.options.finishes, {type: type}).value;
+        $scope.myData.tires = _.find($scope.options.tires, {type: type}).value;
+        $scope.myData.colorSport = $scope.options.colorsSport[0].value
+        for (var extra in $scope.options.extras) {
+          if($scope.myData.extras.indexOf($scope.options.extras[extra].value)<0)
+            $scope.myData.extras.push($scope.options.extras[extra].value)
+        }
+      } else {
+        $scope.myData.colorSport = '';
+      }
+    }
+    
     $scope.$watch('myData.type',function(newValue){
       if(newValue=='sport'){
         $scope.myData.bodyEngine = _.find($scope.options.bodyEngines, {type: newValue}).value;

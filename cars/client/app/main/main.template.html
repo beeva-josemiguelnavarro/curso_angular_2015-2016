@@ -1,10 +1,75 @@
+<form name="carOptions" class="form-horizontal" ng-if="ready" novalidate>
+   <form-element 
+    form="carOptions" 
+    name="type"
+    type="radio"
+    label="Type"
+    model="myData.type"
+    options="options['configurationTypes']"></form-element>
+  <form-element 
+    form="carOptions" 
+    name="bodyEngine"
+    type="select"
+    label="Body Engine"
+    model="myData.bodyEngine"
+    options="options['bodyEngines']"
+    disabled="myData.type=='sport'"></form-element>
+  <form-element 
+    form="carOptions" 
+    name="engine"
+    type="select"
+    label="Engine"
+    model="myData.engine"
+    options="options['engines']"
+    disabled="myData.type=='sport'"></form-element>
+  <form-element 
+    form="carOptions" 
+    name="transmission"
+    type="select"
+    label="Transmission"
+    model="myData.transmission"
+    options="options['transmissions']"
+    disabled="myData.type=='sport'"></form-element>
+  <form-element 
+    form="carOptions" 
+    name="finish"
+    type="select"
+    label="Finish"
+    model="myData.finish"
+    options="options['finishes']"
+    disabled="myData.type=='sport'"></form-element>
+  <form-element 
+    form="carOptions" 
+    name="tires"
+    type="select"
+    label="Tyres"
+    model="myData.tires"
+    options="options['tires']"
+    disabled="myData.type=='sport'"></form-element>
+  <form-element 
+    form="carOptions" 
+    name="color"
+    type="select"
+    label="Color"
+    model="myData.color"
+    options="options['colors']"
+    disabled="myData.type=='sport'"></form-element>
+  <form-element 
+    form="carOptions" 
+    name="colorSport"
+    type="select"
+    label="Color Sport"
+    model="myData.colorSport"
+    options="options['colorsSport']"
+    hide="myData.type!='sport'"></form-element>
+</form>
 <form name="carOptions" class="form-horizontal" ng-if="ready">
   <div class="form-group">
     <label class="col-sm-2 control-label" for="type">Type</label>
     <div class="col-sm-10">
       <label class="radio-inline" ng-repeat="option in options['configurationTypes']">
         <input id="type" name="inlineRadioType" ng-model="myData.type" type="radio" required
-               value="{{option.value}}">{{option.value}}
+               value="{{option.value}}">{{option.label}}
       </label>      
       <div class="alert-error" ng-show="carOptions.inlineRadioType.$dirty">
         <span class="error" ng-show="carOptions.inlineRadioType.$error.required">
@@ -12,97 +77,7 @@
       </div>  
     </div>
   </div>
-
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="bodyEngine">Body Engine</label>
-    <div class="col-sm-10">
-      <select id="bodyEngine" name="bodyEngine" ng-model="myData.bodyEngine" ng-disabled="myData.type=='sport'" required>
-        <option ng-repeat="option in options['bodyEngines']"
-                value="{{option.value}}">{{option.label}}
-        </option>
-      </select>    
-      <div class="alert-error" ng-show="carOptions.bodyEngine.$dirty">
-        <span class="error" ng-show="carOptions.bodyEngine.$error.required">
-          Required field</span>
-      </div>  
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="engine">Engine</label>
-    <div class="col-sm-10">
-      <select id="engine" name="engine" ng-model="myData.engine" ng-disabled="myData.type=='sport'" required>
-        <option ng-repeat="option in options['engines']"
-                value="{{option.value}}">{{option.label}}
-        </option>
-      </select>  
-      <div class="alert-error" ng-show="carOptions.engine.$dirty">
-        <span class="error" ng-show="carOptions.engine.$error.required">
-          Required field</span>
-      </div>  
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="transmission">Transmission</label>
-    <div class="col-sm-10">
-      <select id="transmission" name="transmission" ng-model="myData.transmission" ng-disabled="myData.type=='sport'" required>
-        <option ng-repeat="option in options['transmissions']"
-                value="{{option.value}}">{{option.label}}
-        </option>
-      </select>
-      <div class="alert-error" ng-show="carOptions.transmission.$dirty">
-        <span class="error" ng-show="carOptions.transmission.$error.required">
-          Required field</span>
-      </div> 
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="finish">Finish</label>
-    <div class="col-sm-10">
-      <select id="finish" name="finish" ng-model="myData.finish" ng-disabled="myData.type=='sport'" required>
-        <option ng-repeat="option in options['finishes']"
-                value="{{option.value}}">{{option.label}}
-        </option>
-      </select>
-      <div class="alert-error" ng-show="carOptions.finish.$dirty">
-        <span class="error" ng-show="carOptions.finish.$error.required">
-          Required field</span>
-      </div> 
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="tires">Tires</label>
-    <div class="col-sm-10">
-      <select id="tires" name="tires" ng-model="myData.tires" ng-disabled="myData.type=='sport'" required>
-        <option ng-repeat="option in options['tires']"
-                value="{{option.value}}">{{option.label}}
-        </option>
-      </select>
-      <div class="alert-error" ng-show="carOptions.tires.$dirty">
-        <span class="error" ng-show="carOptions.tires.$error.required">
-          Required field</span>
-      </div> 
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="color">Color</label>
-    <div class="col-sm-10">
-      <select id="color" name="color" ng-model="myData.color" ng-disabled="myData.type=='sport'" required>
-        <option ng-repeat="option in options['colors']"
-                value="{{option.value}}">{{option.label}}
-        </option>
-      </select>
-      <div class="alert-error" ng-show="carOptions.color.$dirty">
-        <span class="error" ng-show="carOptions.color.$error.required">
-          Required field</span>
-      </div> 
-    </div>
-  </div>
-
+  
   <div class="form-group" ng-show="myData.type=='sport'">
     <label class="col-sm-2 control-label" for="colorSport">Color Sport</label>
     <div class="col-sm-10">
@@ -195,9 +170,9 @@
     </div>
   </div>
 </div>
-<!--
+
 <hr>
 {{options}}
 <hr>
 {{myData}}
--->
+
