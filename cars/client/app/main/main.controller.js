@@ -45,14 +45,6 @@ angular.module('carsApp')
       $scope.error = true;
     });
 
-    $scope.toggleExtra = function(extra){
-      if($scope.myData.extras.indexOf(extra)>-1)
-        $scope.myData.extras.splice($scope.myData.extras.indexOf(extra),1)
-      else
-        $scope.myData.extras.push(extra)
-    }
-
-
     $scope.initialize = function(){
       $scope.ready = false
 

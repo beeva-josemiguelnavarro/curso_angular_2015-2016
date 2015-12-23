@@ -22,17 +22,20 @@ angular.module('carsApp')
 						return 'app/directives/formElement/formElement.template.text.html';
 						break;
 				}
-				
+
 			},
 			scope: {
 				form: '=',
 				name: '@',
 				type: '@',
+        inputtype: '@',
 				label: '@',
 				model: '=',
 				options: '=',
 				disabled: '=',
-				hide:'='
+				hide:'=',
+        required: '@',
+        action: '&'
 			},
 			link: function(scope, elem, attrs, transclude){
 			}
