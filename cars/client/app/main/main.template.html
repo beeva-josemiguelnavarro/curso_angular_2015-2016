@@ -4,12 +4,12 @@
     <div class="col-sm-10">
       <label class="radio-inline" ng-repeat="option in options['configurationTypes']">
         <input id="type" name="inlineRadioType" ng-model="myData.type" type="radio" required
-               value="{{option.value}}">{{option.value}}
-      </label>      
+               value="{{option.value}}">{{option.label}}
+      </label>
       <div class="alert-error" ng-show="carOptions.inlineRadioType.$dirty">
         <span class="error" ng-show="carOptions.inlineRadioType.$error.required">
           Required field</span>
-      </div>  
+      </div>
     </div>
   </div>
 
@@ -20,11 +20,11 @@
         <option ng-repeat="option in options['bodyEngines']"
                 value="{{option.value}}">{{option.label}}
         </option>
-      </select>    
+      </select>
       <div class="alert-error" ng-show="carOptions.bodyEngine.$dirty">
         <span class="error" ng-show="carOptions.bodyEngine.$error.required">
           Required field</span>
-      </div>  
+      </div>
     </div>
   </div>
 
@@ -35,11 +35,11 @@
         <option ng-repeat="option in options['engines']"
                 value="{{option.value}}">{{option.label}}
         </option>
-      </select>  
+      </select>
       <div class="alert-error" ng-show="carOptions.engine.$dirty">
         <span class="error" ng-show="carOptions.engine.$error.required">
           Required field</span>
-      </div>  
+      </div>
     </div>
   </div>
 
@@ -54,7 +54,7 @@
       <div class="alert-error" ng-show="carOptions.transmission.$dirty">
         <span class="error" ng-show="carOptions.transmission.$error.required">
           Required field</span>
-      </div> 
+      </div>
     </div>
   </div>
 
@@ -69,7 +69,7 @@
       <div class="alert-error" ng-show="carOptions.finish.$dirty">
         <span class="error" ng-show="carOptions.finish.$error.required">
           Required field</span>
-      </div> 
+      </div>
     </div>
   </div>
 
@@ -84,7 +84,7 @@
       <div class="alert-error" ng-show="carOptions.tires.$dirty">
         <span class="error" ng-show="carOptions.tires.$error.required">
           Required field</span>
-      </div> 
+      </div>
     </div>
   </div>
 
@@ -99,7 +99,7 @@
       <div class="alert-error" ng-show="carOptions.color.$dirty">
         <span class="error" ng-show="carOptions.color.$error.required">
           Required field</span>
-      </div> 
+      </div>
     </div>
   </div>
 
@@ -132,7 +132,7 @@
       <div class="alert-error" ng-show="carOptions.comments.$dirty">
         <span class="error" ng-show="carOptions.comments.$error.required">
           Required field</span>
-      </div>  
+      </div>
     </div>
   </div>
 
@@ -140,7 +140,7 @@
     <label class="col-sm-2 control-label" for="cp">CP</label>
     <div class="col-sm-10">
       <input ng-model="myData.cp" id="cp" name="cp" type="text" ng-minlength="5" ng-maxlength="5" required>
-      </input>   
+      </input>
       <div class="alert-error" ng-show="carOptions.cp.$dirty">
         <span class="error" ng-show="carOptions.cp.$error.required">
           Required field</span>
@@ -148,7 +148,7 @@
           Too short!</span>
         <span class="error" ng-show="carOptions.cp.$error.maxlength">
           Too long!</span>
-      </div> 
+      </div>
     </div>
   </div>
 
@@ -156,13 +156,13 @@
     <label class="col-sm-2 control-label" for="email">Email</label>
     <div class="col-sm-10">
       <input ng-model="myData.email" id="email" name="email" type="email" required>
-      </input> 
+      </input>
       <div class="alert-error" ng-show="carOptions.email.$dirty">
         <span class="error" ng-show="carOptions.email.$error.required">
           Required field</span>
         <span class="error" ng-show="carOptions.email.$error.email">
           Email invalid format</span>
-      </div> 
+      </div>
     </div>
   </div>
 
